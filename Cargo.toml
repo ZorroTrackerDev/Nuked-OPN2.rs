@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "nuked-opn2-sys",
+    "nuked-opn2-rs",
+    "nuked-opn2-node"
+]
