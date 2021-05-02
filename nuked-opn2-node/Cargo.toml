@@ -3,7 +3,15 @@ name = "nuked-opn2-node"
 version = "0.1.0"
 authors = ["ShinySaana <shinysaana@gmail.com>"]
 edition = "2018"
+exclude = ["index.node"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib"]
 
 [dependencies]
+nuked-opn2-rs = { path = "../nuked-opn2-rs" }
+
+[dependencies.neon]
+version = "0.8"
+default-features = false
+features = ["napi-6"]

@@ -1,7 +1,11 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
+use neon::prelude::*;
+
+fn hello(mut cx: FunctionContext) -> JsResult<JsString> {
+    Ok(cx.string("hello node"))
+}
+
+#[neon::main]
+fn main(mut cx: ModuleContext) -> NeonResult<()> {
+    cx.export_function("hello", hello)?;
+    Ok(())
 }
