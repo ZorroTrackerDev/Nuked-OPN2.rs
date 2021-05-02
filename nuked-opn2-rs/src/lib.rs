@@ -51,14 +51,33 @@ impl Chip {
         buffer
     }
 
-    pub fn write(&mut self, port: u8, data: u8) {
-        assert!(port <= 3);
-
+    pub fn write(&mut self, port: u32, data: u8) {
         unsafe {
-            OPN2_Write(&mut *self.ptr, port as u32, data);
+            OPN2_Write(&mut *self.ptr, port, data);
+        }
+    }
+
+    pub fn set_test_pin(&mut self, value: u32) {
+        unsafe {
+            OPN2_SetTestPin(&mut *self.ptr, value);
+        }
+    }
+
+    pub fn read_test_pin(&mut self) -> u32 {
+        unsafe {
+            OPN2_ReadTestPin(&mut *self.ptr)
+        }
+    }
+
+    pub fn read_irq_pin(&mut self) -> u32 {
+        unsafe {
+            OPN2_ReadIRQPin(&mut *self.ptr)
+        }
+    }
+
+    pub fn read(&mut self, port: u32) -> u8 {
+        unsafe {
+            OPN2_Read(&mut *self.ptr, port)
         }
     }
 }
-
-
-
