@@ -1,3 +1,5 @@
+use std::str::FromStr;
+
 use nuked_opn2_sys::*;
 
 #[repr(u32)]
@@ -5,6 +7,18 @@ use nuked_opn2_sys::*;
 pub enum ChipType {
     YM2612 = ym3438_mode_ym2612,
     YM3438 = ym3438_mode_readmode
+}
+
+impl FromStr for ChipType {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "YM2612" => Ok(Self::YM2612),
+            "YM3438" => Ok(Self::YM3438),
+            _ => Err(())
+        }
+    }
 }
 
 #[derive(Debug)]
