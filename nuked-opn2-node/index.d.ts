@@ -1,5 +1,5 @@
 export const YM2612: string;
-export const YM2612: string;
+export const YM3438: string;
 
 export declare class Chip {
     constructor(type: string);
