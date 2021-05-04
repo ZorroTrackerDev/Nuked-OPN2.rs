@@ -49,8 +49,8 @@ class Chip {
         addon.writeBuffered(this.inner, port, data)
     }
 
-    generate_resampled() {
-        return addon.generate_resampled(this.inner)
+    generateResampled() {
+        return addon.generateResampled(this.inner)
     }
 
     update(samplesSize) {
