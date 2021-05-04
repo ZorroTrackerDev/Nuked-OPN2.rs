@@ -36,18 +36,42 @@ class Chip {
     read(port) {
         return addon.read(this.inner, port)
     }
+
+    setClockRate(clock, rate) {
+        addon.setClockRate(this.inner, clock, rate)
+    }
+
+    resetWithClockRate(clock, rate) {
+        addon.resetWithClockRate(this.inner, clock, rate)
+    }
+
+    writeBuffered(port, data) {
+        addon.writeBuffered(this.inner, port, data)
+    }
+
+    generate_resampled() {
+        return addon.generate_resampled(this.inner)
+    }
+
+    update(samplesSize) {
+        return addon.update(this.inner, samplesSize)
+    }
 }
 
 const YM2612 = "YM2612"
-const YM3438 = "YM3438"
+const ASICYM3438 = "ASICYM3438"
+const DiscreteYM3438 = "DiscreteYM3438"
 
 const newYM2612Chip = () => new Chip(YM2612)
-const newYM3438Chip = () => new Chip(YM3438)
+const newASICYM3438Chip = () => new Chip(ASICYM3438)
+const newDiscreteYM3438Chip = () => new Chip(DiscreteYM3438)
 
 exports = module.exports = {
     YM2612,
-    YM3438,
+    ASICYM3438,
+    DiscreteYM3438,
     newYM2612Chip,
-    newYM3438Chip,
+    newASICYM3438Chip,
+    newDiscreteYM3438Chip,
     Chip
 }

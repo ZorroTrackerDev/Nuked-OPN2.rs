@@ -15,12 +15,6 @@ pub struct ChipWrapper {
     pub chip: Chip
 }
 
-impl ChipWrapper {
-    pub fn get_mut_chip(&mut self) -> &Chip {
-        &mut self.chip
-    }
-}
-
 impl Finalize for ChipWrapper {}
 
 type BoxedChip = JsBox<RefCell<ChipWrapper>>;
@@ -129,6 +123,86 @@ fn read(mut cx: FunctionContext) -> JsResult<JsNumber> {
     Ok(JsNumber::new(&mut cx, chip.chip.read(port)))
 }
 
+fn set_clock_rate(mut cx: FunctionContext) -> JsResult<JsUndefined> {
+    let chip = *cx.argument::<BoxedChip>(0)?;
+    let mut chip = RefCell::borrow_mut(&chip);
+
+    let clock = cx.argument::<JsNumber>(1)?.value(&mut cx);
+    let clock = f64_to_u32(clock);
+
+    let rate = cx.argument::<JsNumber>(2)?.value(&mut cx);
+    let rate = f64_to_u32(rate);
+
+    chip.chip.set_clock_rate(clock, rate);
+
+
+    Ok(cx.undefined())
+}
+
+fn reset_with_clock_rate(mut cx: FunctionContext) -> JsResult<JsUndefined> {
+    let chip = *cx.argument::<BoxedChip>(0)?;
+    let mut chip = RefCell::borrow_mut(&chip);
+
+    let clock = cx.argument::<JsNumber>(1)?.value(&mut cx);
+    let clock = f64_to_u32(clock);
+
+    let rate = cx.argument::<JsNumber>(2)?.value(&mut cx);
+    let rate = f64_to_u32(rate);
+
+    chip.chip.reset_with_clock_rate(clock, rate);
+
+    Ok(cx.undefined())
+}
+
+
+fn write_buffered(mut cx: FunctionContext) -> JsResult<JsUndefined> {
+    let chip = *cx.argument::<BoxedChip>(0)?;
+    let mut chip = RefCell::borrow_mut(&chip);
+
+    let port = cx.argument::<JsNumber>(1)?.value(&mut cx);
+    let port = f64_to_u8(port);
+
+    let data = cx.argument::<JsNumber>(2)?.value(&mut cx);
+    let data = f64_to_u8(data);
+
+    chip.chip.write_buffered(port, data);
+
+    Ok(cx.undefined())
+}
+
+fn generate_resampled(mut cx: FunctionContext) -> JsResult<JsArray> {
+    let chip = *cx.argument::<BoxedChip>(0)?;
+    let mut chip = RefCell::borrow_mut(&chip);
+
+    let buf = chip.chip.generate_resampled();
+    let array = JsArray::new(&mut cx, 2);
+
+    for (index, data) in buf.iter().enumerate() {
+        let number = JsNumber::new(&mut cx, *data);
+        array.set(&mut cx, index as u32, number)?;
+    }
+
+    Ok(array)
+}
+
+fn update(mut cx: FunctionContext) -> JsResult<JsArray> {
+    let chip = *cx.argument::<BoxedChip>(0)?;
+    let mut chip = RefCell::borrow_mut(&chip);
+
+    let samples_size = cx.argument::<JsNumber>(1)?.value(&mut cx);
+    let samples_size = f64_to_u32(samples_size);
+
+    let buf = chip.chip.update(samples_size as usize);
+    let array = JsArray::new(&mut cx, buf.len() as u32);
+
+    for (index, data) in buf.iter().enumerate() {
+        let number = JsNumber::new(&mut cx, *data);
+        array.set(&mut cx, index as u32, number)?;
+    }
+
+    Ok(array)
+}
+
 register_module!(mut cx, {
     cx.export_function("new", new)?;
     cx.export_function("withType", with_type)?;
@@ -142,6 +216,12 @@ register_module!(mut cx, {
     cx.export_function("readTestPin", read_test_pin)?;
     cx.export_function("readIrqPin", read_irq_pin)?;
     cx.export_function("read", read)?;
+
+    cx.export_function("setClockRate", set_clock_rate)?;
+    cx.export_function("resetWithClockRate", reset_with_clock_rate)?;
+    cx.export_function("writeBuffered", write_buffered)?;
+    cx.export_function("generateResampled", generate_resampled)?;
+    cx.export_function("update", update)?;
 
     Ok(())
 });
