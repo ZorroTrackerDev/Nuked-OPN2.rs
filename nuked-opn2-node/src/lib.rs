@@ -203,6 +203,18 @@ fn update(mut cx: FunctionContext) -> JsResult<JsArray> {
     Ok(array)
 }
 
+fn set_mutemask(mut cx: FunctionContext) -> JsResult<JsUndefined> {
+    let chip = *cx.argument::<BoxedChip>(0)?;
+    let mut chip = RefCell::borrow_mut(&chip);
+
+    let mutemask = cx.argument::<JsNumber>(1)?.value(&mut cx);
+    let mutemask = f64_to_u8(mutemask);
+
+    chip.chip.set_mutemask(mutemask);
+
+    Ok(cx.undefined())
+}
+
 register_module!(mut cx, {
     cx.export_function("new", new)?;
     cx.export_function("withType", with_type)?;
@@ -222,6 +234,7 @@ register_module!(mut cx, {
     cx.export_function("writeBuffered", write_buffered)?;
     cx.export_function("generateResampled", generate_resampled)?;
     cx.export_function("update", update)?;
+    cx.export_function("setMutemask", set_mutemask)?;
 
     Ok(())
 });

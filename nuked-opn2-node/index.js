@@ -56,6 +56,10 @@ class Chip {
     update(samplesSize) {
         return addon.update(this.inner, samplesSize)
     }
+
+    setMutemask(mutemask) {
+        return addon.setMutemask(this.inner, mutemask)
+    }
 }
 
 const YM2612 = "YM2612"

@@ -15,8 +15,9 @@ export declare class Chip {
     public setClockRate(clock: number, rate: number): void;
     public resetWithClockRate(clock: number, rate: number): void;
     public writeBuffered(port: number, data: number): void;
-    public generateResampled(): Array<number>
-    public update(samplesSize: number): Array<number> 
+    public generateResampled(): Array<number>;
+    public update(samplesSize: number): Array<number>;
+    public setMutemask(mutemask: number): void;
 }
 
 export function newYM2612Chip(): Chip;

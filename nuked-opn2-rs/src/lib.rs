@@ -133,4 +133,10 @@ impl Chip {
 
         buffer
     }
+
+    pub fn set_mutemask(&mut self, mutemask: u8) {
+        unsafe {
+            OPN2_SetMutemask(&mut *self.ptr, mutemask);
+        }
+    }
 }
