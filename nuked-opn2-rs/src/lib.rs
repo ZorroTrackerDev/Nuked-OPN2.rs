@@ -2,22 +2,34 @@ use std::str::FromStr;
 
 use nuked_opn2_sys::*;
 
+pub mod constants {
+
+    pub const YM2612: &str = "YM2612";
+    pub const ASIC_YM3438: &str = "ASICYM3438";
+    pub const DISCRETE_YM3438: &str = "DiscreteYM3438";
+    pub const YM2612_MD1: &str = "YM2612WithMD1";
+
+}
+
 #[repr(u32)]
 #[derive(Copy, Clone, Debug)]
 pub enum ChipType {
     YM2612 = ym3438_mode_ym2612,
     ASICYM3438 = ym3438_mode_readmode,
-    DiscreteYM3438 = ym3438_mode_ym2612 | ym3438_mode_readmode
+    DiscreteYM3438 = ym3438_mode_ym2612 | ym3438_mode_readmode,
+    YM2612MD1 = ym3438_mode_ym2612 | 0x10
 }
+
 
 impl FromStr for ChipType {
     type Err = ();
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
-            "YM2612" => Ok(Self::YM2612),
-            "ASICYM3438" => Ok(Self::ASICYM3438),
-            "DiscreteYM3438" => Ok(Self::DiscreteYM3438),
+            constants::YM2612 => Ok(Self::YM2612),
+            constants::ASIC_YM3438 => Ok(Self::ASICYM3438),
+            constants::DISCRETE_YM3438 => Ok(Self::DiscreteYM3438),
+            constants::YM2612_MD1 => Ok(Self::YM2612MD1),
             _ => Err(())
         }
     }
