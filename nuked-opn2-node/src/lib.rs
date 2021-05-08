@@ -4,11 +4,11 @@ use nuked_opn2_rs::*;
 use neon::{context::Context, prelude::*};
 
 fn f64_to_u8(number: f64) -> u8 {
-    (number % f64::from(u8::MAX)).floor() as u8
+    (number % (f64::from(u8::MAX) + 1.0)).round() as u8
 }
 
 fn f64_to_u32(number: f64) -> u32 {
-    (number % f64::from(u32::MAX)).floor() as u32
+    (number % (f64::from(u32::MAX) + 1.0)).round() as u32
 }
 
 pub struct ChipWrapper {
