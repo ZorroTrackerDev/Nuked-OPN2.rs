@@ -65,23 +65,23 @@ class Chip {
 const YM2612 = "YM2612"
 const ASICYM3438 = "ASICYM3438"
 const DiscreteYM3438 = "DiscreteYM3438"
-const YM2612MD1 = "YM2612MD1"
+const YM2612WithMD1 = "YM2612WithMD1"
 
 const newYM2612Chip = () => new Chip(YM2612)
 const newASICYM3438Chip = () => new Chip(ASICYM3438)
 const newDiscreteYM3438Chip = () => new Chip(DiscreteYM3438)
-const newYM2612MD1Chip = () => new Chip(YM2612MD1)
+const newYM2612WithMD1Chip = () => new Chip(YM2612WithMD1)
 
 exports = module.exports = {
     YM2612,
     ASICYM3438,
     DiscreteYM3438,
-    YM2612MD1,
+    YM2612WithMD1,
 
     newYM2612Chip,
     newASICYM3438Chip,
     newDiscreteYM3438Chip,
-    newYM2612MD1Chip,
+    newYM2612WithMD1Chip,
     
     Chip
 }

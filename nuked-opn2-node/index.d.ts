@@ -1,7 +1,7 @@
 export const YM2612: string;
 export const ASICYM3438: string;
 export const DiscreteYM3438: string;
-export const YM2612MD1: string;
+export const YM2612WithMD1: string;
 
 export declare class Chip {
     constructor(type: string);
@@ -24,4 +24,4 @@ export declare class Chip {
 export function newYM2612Chip(): Chip;
 export function newASICYM3438Chip(): Chip;
 export function newDiscreteYM3438Chip(): Chip;
-export function newYM2612MD1Chip(): Chip;
+export function newYM2612WithMD1Chip(): Chip;
