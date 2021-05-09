@@ -4,7 +4,7 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ZorroTrackerDev/Nuked-OPN2.rs/.git"
+    "url": "https://github.com/ZorroTrackerDev/Nuked-OPN2.rs.git"
   } ,
   "main": "index.js",
   "types": "index.d.ts",
