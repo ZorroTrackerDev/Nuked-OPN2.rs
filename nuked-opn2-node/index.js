@@ -1,4 +1,4 @@
-const addon = require("./addon.node")
+const addon = require("./lib/nuked-opn2-node")
 
 class Chip {
     constructor(type) {

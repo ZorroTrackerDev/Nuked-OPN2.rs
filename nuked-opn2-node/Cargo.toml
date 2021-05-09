@@ -14,4 +14,4 @@ nuked-opn2-rs = { path = "../nuked-opn2-rs" }
 [dependencies.neon]
 version = "0.8"
 default-features = false
-features = ["napi-6"]
+features = ["napi-4"]

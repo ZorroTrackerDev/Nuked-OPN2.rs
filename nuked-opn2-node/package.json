@@ -2,16 +2,32 @@
   "name": "nuked-opn2-node",
   "version": "0.1.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZorroTrackerDev/Nuked-OPN2.rs/.git"
+  } ,
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "cargo-cp-artifact -nc addon.node -- cargo build --message-format=json-render-diagnostics",
-    "install": "npm run build",
+    "build": "cargo-cp-artifact -nc lib/nuked-opn2-node.node -- cargo build --message-format=json-render-diagnostics",
+    "build:win32:x64": "npm run build -- --release --target x86_64-pc-windows-gnu",
+    "build:win32:arm64": "npm run build -- --release --target aarch64-pc-windows-msvc",
+    "build:linux:x64": "npm run build -- --release --target x86_64-unknown-linux-gnu",
+    "build:linux:arm64": "npm run build -- --release --target aarch64-unknown-linux-gnu",
+    "build:darwin:x64": "npm run build -- --release --target x86_64-apple-darwin",
+    "build:darwin:arm64": "npm run build -- --release --target aarch64-apple-darwin",
+    "install": "prebuild-install --runtime napi",
     "test": "cargo test"
   },
   "author": "ShinySaana",
+  "binary": {
+    "napi_versions": []
+  },
   "devDependencies": {
     "cargo-cp-artifact": "^0.1",
     "typescript": "*"
+  },
+  "dependencies": {
+    "prebuild-install": "^5.3.3"
   }
 }
