@@ -21,7 +21,7 @@
   },
   "author": "ShinySaana",
   "binary": {
-    "napi_versions": []
+    "napi_versions": [4]
   },
   "devDependencies": {
     "cargo-cp-artifact": "^0.1",
