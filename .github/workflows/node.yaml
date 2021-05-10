@@ -16,5 +16,7 @@ jobs:
     - uses: actions/setup-node@v2
     
     - run: "npm build build:linux:x86"
+      working-directory: ./nuked-opn2-node
     - run: "npm build build:linux:x64"
+      working-directory: ./nuked-opn2-node
     
