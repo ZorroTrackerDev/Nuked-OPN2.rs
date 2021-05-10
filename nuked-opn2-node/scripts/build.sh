@@ -22,4 +22,5 @@ strip $artifact_name
 
 mkdir -p $final_artifact_dir/lib
 mv $artifact_name $final_artifact_dir/lib
+mkdir -p $DIR/prebuilds
 tar -czvf $DIR/prebuilds/$final_name.tar.gz -C $DIR/prebuilds-artifacts/$final_name lib

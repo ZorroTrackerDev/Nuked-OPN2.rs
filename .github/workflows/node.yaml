@@ -1,8 +1,12 @@
 name: Node
 
+# on:
+#   release:
+#     types: ["published"]
+
 on:
-  release:
-    types: ["published"]
+  push:
+    branches: [ ga ]
 
 env:
   CARGO_TERM_COLOR: always
