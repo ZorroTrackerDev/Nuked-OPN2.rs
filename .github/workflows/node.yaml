@@ -1,12 +1,8 @@
 name: Node
 
-# on:
-#   release:
-#     types: ["published"]
-
 on:
-  push:
-    branches: [ ga ]
+  release:
+    types: ["published"]
 
 env:
   CARGO_TERM_COLOR: always
@@ -30,3 +26,9 @@ jobs:
       working-directory: ./nuked-opn2-node/scripts
     - run: "bash ./build-linux-x64.sh"
       working-directory: ./nuked-opn2-node/scripts
+
+    - uses: softprops/action-gh-release@v1
+      working-directory: ./nuked-opn2-node
+      files: "./prebuilds/*"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
