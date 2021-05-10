@@ -29,6 +29,7 @@ jobs:
 
     - uses: softprops/action-gh-release@v1
       working-directory: ./nuked-opn2-node
-      files: "./prebuilds/*"
+      with:
+        files: "./prebuilds/*"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
