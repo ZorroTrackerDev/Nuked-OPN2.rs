@@ -13,7 +13,7 @@ cd $DIR
 name=$(node $SCRIPT_DIR/get_name.js)
 version=$(node $SCRIPT_DIR/get_version.js)
 artifact_name=$DIR/lib/$name.node
-final_name=$name-$version-napi-v4-$platform
+final_name=$name-v$version-napi-v4-$platform
 final_artifact_dir=$DIR/prebuilds-artifacts/$final_name
 
 rm -rf $artifact_name || true

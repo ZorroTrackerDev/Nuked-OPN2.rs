@@ -32,3 +32,29 @@ jobs:
         files: "./nuked-opn2-node/prebuilds/*"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+
+  # win32:
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       submodules: recursive
+  #   - uses: actions/setup-node@v2
+
+  #   - run: "sudo apt-get update && sudo apt-get install gcc-multilib "
+
+  #   - run: "npm install --ignore-scripts"
+  #     working-directory: ./nuked-opn2-node
+    
+  #   - run: "bash ./build-linux-x86.sh"
+  #     working-directory: ./nuked-opn2-node/scripts
+  #   - run: "bash ./build-linux-x64.sh"
+  #     working-directory: ./nuked-opn2-node/scripts
+
+  #   - uses: softprops/action-gh-release@v1
+  #     with:
+  #       files: "./nuked-opn2-node/prebuilds/*"
+  #     env:
+  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

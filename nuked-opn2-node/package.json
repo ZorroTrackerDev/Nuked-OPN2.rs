@@ -4,8 +4,8 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ZorroTrackerDev/Nuked-OPN2.rs.git"
-  } ,
+    "url": "https://github.com/ZorroTrackerDev/Nuked-OPN2.rs"
+  },
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
@@ -18,12 +18,14 @@
     "build:linux:arm64": "npm run build -- --release --target aarch64-unknown-linux-gnu",
     "build:darwin:x64": "npm run build -- --release --target x86_64-apple-darwin",
     "build:darwin:arm64": "npm run build -- --release --target aarch64-apple-darwin",
-    "install": "prebuild-install --runtime napi",
+    "install": "prebuild-install --verbose --force --runtime napi",
     "test": "cargo test"
   },
   "author": "ShinySaana",
   "binary": {
-    "napi_versions": [4]
+    "napi_versions": [
+      4
+    ]
   },
   "devDependencies": {
     "cargo-cp-artifact": "^0.1",
