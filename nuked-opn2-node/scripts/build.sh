@@ -8,6 +8,8 @@ DIR=$SCRIPT_DIR/..
 npm_script=$1
 platform=$2
 
+cd $DIR
+
 name=$(node $SCRIPT_DIR/get_name.js)
 version=$(node $SCRIPT_DIR/get_version.js)
 artifact_name=$DIR/lib/$name.node

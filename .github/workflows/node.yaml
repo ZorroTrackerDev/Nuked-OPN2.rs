@@ -19,7 +19,7 @@ jobs:
       working-directory: ./nuked-opn2-node
     
     
-    - run: "./build-linux-x86.sh"
+    - run: "bash ./build-linux-x86.sh"
       working-directory: ./nuked-opn2-node/scripts
     - run: "./build-linux-x64.sh"
       working-directory: ./nuked-opn2-node/scripts
