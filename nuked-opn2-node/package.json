@@ -10,8 +10,10 @@
   "types": "index.d.ts",
   "scripts": {
     "build": "cargo-cp-artifact -nc lib/nuked-opn2-node.node -- cargo build --message-format=json-render-diagnostics",
+    "build:win32:x86": "npm run build -- --release --target i686-pc-windows-gnu",
     "build:win32:x64": "npm run build -- --release --target x86_64-pc-windows-gnu",
     "build:win32:arm64": "npm run build -- --release --target aarch64-pc-windows-msvc",
+    "build:linux:x86": "npm run build -- --release --target i686-unknown-linux-gnu",
     "build:linux:x64": "npm run build -- --release --target x86_64-unknown-linux-gnu",
     "build:linux:arm64": "npm run build -- --release --target aarch64-unknown-linux-gnu",
     "build:darwin:x64": "npm run build -- --release --target x86_64-apple-darwin",
