@@ -15,3 +15,4 @@ nuked-opn2-rs = { path = "../nuked-opn2-rs" }
 version = "0.8"
 default-features = false
 features = ["napi-4"]
+
