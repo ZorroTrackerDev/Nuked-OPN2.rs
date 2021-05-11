@@ -76,6 +76,9 @@ jobs:
     - run: "bash ./build-darwin-x64.sh"
       working-directory: ./nuked-opn2-node/scripts
 
+    - run: "bash ./build-darwin-arm64.sh"
+      working-directory: ./nuked-opn2-node/scripts
+
 
     - uses: softprops/action-gh-release@v1
       with:

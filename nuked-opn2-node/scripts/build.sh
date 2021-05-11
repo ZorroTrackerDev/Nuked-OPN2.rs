@@ -30,7 +30,6 @@ else
     strip $artifact_name
 fi
 
-
 mkdir -p $final_artifact_dir/lib
 mv $artifact_name $final_artifact_dir/lib
 mkdir -p $DIR/prebuilds
