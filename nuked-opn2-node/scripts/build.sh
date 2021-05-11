@@ -9,6 +9,10 @@ platform=$1
 target=$2
 artifact_output=$3
 
+pattern_darwin="darwin"
+pattern_arm64_linux="linux-arm64"
+pattern_arm64_windows="win32-arm64"
+
 cd $DIR
 
 name=$(node $SCRIPT_DIR/get_name.js)
@@ -18,13 +22,17 @@ final_name=$name-v$version-napi-v4-$platform
 final_artifact_dir=$DIR/prebuilds-artifacts/$final_name
 
 rm -rf $artifact_name || true
-$SCRIPT_DIR/cross.sh build --release -p nuked-opn2-node --target $target 
+
+if [[ $platform =~ $pattern_arm64_windows ]]
+then
+    cargo build --release -p nuked-opn2-node --target $target
+else
+    $SCRIPT_DIR/cross.sh build --release -p nuked-opn2-node --target $target 
+fi
 mkdir -p $DIR/lib
 cp $DIR/../target/$target/release/$artifact_output $artifact_name
 
-pattern_darwin="darwin"
-pattern_arm64_linux="linux-arm64"
-pattern_arm64_windows="win32-arm64"
+
 if [[ $platform =~ $pattern_darwin ]]
 then
     strip -S $artifact_name
