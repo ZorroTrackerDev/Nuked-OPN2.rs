@@ -29,6 +29,8 @@ jobs:
       working-directory: ./nuked-opn2-node/scripts
     - run: "bash ./build-linux-x64.sh"
       working-directory: ./nuked-opn2-node/scripts
+    - run: "bash ./build-linux-arm64.sh"
+      working-directory: ./nuked-opn2-node/scripts
 
     - uses: softprops/action-gh-release@v1
       with:
