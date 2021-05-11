@@ -77,8 +77,7 @@ jobs:
     - run: "npm install --ignore-scripts"
       working-directory: ./nuked-opn2-node
     
-    - run: "cargo build --release --target "
-      shell: bash
+    - run: "bash ./build-win32-arm64.sh"
       working-directory: ./nuked-opn2-node/scripts
 
     - uses: softprops/action-gh-release@v1
