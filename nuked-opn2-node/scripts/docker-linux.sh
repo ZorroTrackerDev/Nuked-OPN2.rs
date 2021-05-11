@@ -2,5 +2,7 @@
 
 set -e
 
-docker build -t linux-x86-cross -f linux-x86-cross.Dockerfile .
-docker build -t linux-x64-cross -f linux-x64-cross.Dockerfile .
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+docker build -t linux-x86-cross -f $SCRIPT_DIR/linux-x86-cross.Dockerfile $SCRIPT_DIR
+docker build -t linux-x64-cross -f $SCRIPT_DIR/linux-x64-cross.Dockerfile $SCRIPT_DIR

@@ -7,6 +7,7 @@ DIR=$SCRIPT_DIR/..
 
 npm_script=$1
 platform=$2
+artifact_output=$3
 
 cd $DIR
 
@@ -18,6 +19,7 @@ final_artifact_dir=$DIR/prebuilds-artifacts/$final_name
 
 rm -rf $artifact_name || true
 npm run $npm_script
+cp $DIR/../target/$artifact_output $artifact_name
 strip $artifact_name
 
 mkdir -p $final_artifact_dir/lib
