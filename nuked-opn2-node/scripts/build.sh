@@ -17,7 +17,7 @@ cd $DIR
 
 name=$(node $SCRIPT_DIR/get_name.js)
 version=$(node $SCRIPT_DIR/get_version.js)
-artifact_name=$DIR/lib/$name.node
+artifact_name=$DIR/build/$name.node
 final_name=$name-v$version-napi-v4-$platform
 final_artifact_dir=$DIR/prebuilds-artifacts/$final_name
 
@@ -31,7 +31,7 @@ else
 fi
 
 
-mkdir -p $DIR/lib
+mkdir -p $DIR/build
 cp $DIR/../target/$target/release/$artifact_output $artifact_name
 
 if [[ $platform =~ $pattern_darwin ]]
@@ -47,7 +47,7 @@ else
     strip $artifact_name
 fi
 
-mkdir -p $final_artifact_dir/lib
-mv $artifact_name $final_artifact_dir/lib
+mkdir -p $final_artifact_dir/build
+mv $artifact_name $final_artifact_dir/build
 mkdir -p $DIR/prebuilds
-tar -czvf $DIR/prebuilds/$final_name.tar.gz -C $DIR/prebuilds-artifacts/$final_name lib
+tar -czvf $DIR/prebuilds/$final_name.tar.gz -C $DIR/prebuilds-artifacts/$final_name build

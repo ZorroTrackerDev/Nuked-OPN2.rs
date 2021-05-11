@@ -1,6 +1,6 @@
 {
   "name": "nuked-opn2-node",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "cargo-cp-artifact -nc lib/nuked-opn2-node.node -- cargo build --message-format=json-render-diagnostics",
+    "build": "cargo-cp-artifact -nc build/nuked-opn2-node.node -- cargo build --message-format=json-render-diagnostics",
     "build:win32:x86": "./scripts/build-win32-x86.sh",
     "build:win32:x64": "./scripts/build-win32-x64.sh",
     "build:win32:arm64": "./scripts/build-win32-arm64.sh",
@@ -32,6 +32,7 @@
     "typescript": "*"
   },
   "dependencies": {
+    "bindings": "^1.5.0",
     "prebuild-install": "^5.3.3"
   }
 }
