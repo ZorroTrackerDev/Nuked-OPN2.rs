@@ -21,7 +21,12 @@ rm -rf $artifact_name || true
 npm run $npm_script
 mkdir -p $DIR/lib
 cp $DIR/../target/$artifact_output $artifact_name
-strip $artifact_name
+
+pattern="darwin"
+if [[ ! $platform =~ $pattern ]]
+    strip $artifact_name
+fi
+
 
 mkdir -p $final_artifact_dir/lib
 mv $artifact_name $final_artifact_dir/lib
