@@ -29,9 +29,10 @@ then
 else
     $SCRIPT_DIR/cross.sh build --release -p nuked-opn2-node --target $target 
 fi
+
+
 mkdir -p $DIR/lib
 cp $DIR/../target/$target/release/$artifact_output $artifact_name
-
 
 if [[ $platform =~ $pattern_darwin ]]
 then
