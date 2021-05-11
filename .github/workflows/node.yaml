@@ -46,7 +46,10 @@ jobs:
     - run: "npm install --ignore-scripts"
       working-directory: ./nuked-opn2-node
 
-    - run: "sudo apt-get update && sudo apt-get install mingw-w64 gcc-multilib"
+    - run: "sudo ./docker.sh"
+      working-directory: ./nuked-opn2-node/scripts
+
+    - run: "sudo apt-get update && sudo apt-get install mingw-w64"
     
     - run: "bash ./build-win32-x86.sh"
       working-directory: ./nuked-opn2-node/scripts

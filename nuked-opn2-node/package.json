@@ -1,6 +1,6 @@
 {
   "name": "nuked-opn2-node",
-  "version": "0.1.4",
+  "version": "0.1.3",
   "description": "",
   "repository": {
     "type": "git",
@@ -9,9 +9,9 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "cargo-cp-artifact -nc lib/nuked-opn2-node.node -- cargo build --message-format=json-render-diagnostics",
+    "build": "cargo-cp-artifact -nc lib/nuked-opn2-node.node -- ./scripts/cross.sh build --message-format=json-render-diagnostics -p nuked-opn2-node",
     "build:win32:x86": "npm run build -- --release --target i686-pc-windows-gnu",
-    "build:win32:x64": "npm run build -- --release --target x86_64-pc-windows-gnu",
+    "build:win32:x64": "npm run build -- --release --target x86_64-pc-windows-msvc",
     "build:win32:arm64": "npm run build -- --release --target aarch64-pc-windows-msvc",
     "build:linux:x86": "npm run build -- --release --target i686-unknown-linux-gnu",
     "build:linux:x64": "npm run build -- --release --target x86_64-unknown-linux-gnu",

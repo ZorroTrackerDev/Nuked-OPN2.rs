@@ -1,0 +1,2 @@
+[target.i686-pc-windows-gnu]
+image = "win32-x86-cross"
