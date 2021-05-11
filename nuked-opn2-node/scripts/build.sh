@@ -24,6 +24,7 @@ cp $DIR/../target/$artifact_output $artifact_name
 
 pattern="darwin"
 if [[ ! $platform =~ $pattern ]]
+then
     strip $artifact_name
 fi
 
