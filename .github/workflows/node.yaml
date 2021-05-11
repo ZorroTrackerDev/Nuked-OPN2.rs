@@ -17,7 +17,8 @@ jobs:
         submodules: recursive
     - uses: actions/setup-node@v2
 
-    - run: "sudo apt-get update && sudo apt-get install gcc-multilib"
+    - run: "sudo ./docker-linux.sh"
+      working-directory: ./nuked-opn2-node/scripts
 
     - run: "npm install --ignore-scripts"
       working-directory: ./nuked-opn2-node
@@ -46,10 +47,8 @@ jobs:
     - run: "npm install --ignore-scripts"
       working-directory: ./nuked-opn2-node
 
-    - run: "sudo ./docker.sh"
+    - run: "sudo ./docker-win32.sh"
       working-directory: ./nuked-opn2-node/scripts
-
-    - run: "sudo apt-get update && sudo apt-get install mingw-w64"
     
     - run: "bash ./build-win32-x86.sh"
       working-directory: ./nuked-opn2-node/scripts
