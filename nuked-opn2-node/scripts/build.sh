@@ -19,7 +19,7 @@ final_artifact_dir=$DIR/prebuilds-artifacts/$final_name
 
 rm -rf $artifact_name || true
 npm run $npm_script
-mkdir $DIR/lib
+mkdir -p $DIR/lib
 cp $DIR/../target/$artifact_output $artifact_name
 strip $artifact_name
 
