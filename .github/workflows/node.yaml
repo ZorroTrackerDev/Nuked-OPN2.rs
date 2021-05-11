@@ -68,7 +68,8 @@ jobs:
         submodules: recursive
     - uses: actions/setup-node@v2
 
-    - run: "C:\\msys64\\usr\\bin\\bash.exe -c \"pacman -S mingw-w64-x86_64-clang\""
+    - name: Set LIBCLANG_PATH
+      run: echo "LIBCLANG_PATH=$((gcm clang).source -replace "clang.exe")" >> $env:GITHUB_ENV
     
     - run: "bash ./build-win32-arm64.sh"
       working-directory: ./nuked-opn2-node/scripts
