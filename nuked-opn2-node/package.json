@@ -4,24 +4,28 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ZorroTrackerDev/Nuked-OPN2.rs.git"
-  } ,
+    "url": "https://github.com/ZorroTrackerDev/Nuked-OPN2.rs"
+  },
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "build": "cargo-cp-artifact -nc lib/nuked-opn2-node.node -- cargo build --message-format=json-render-diagnostics",
-    "build:win32:x64": "npm run build -- --release --target x86_64-pc-windows-gnu",
-    "build:win32:arm64": "npm run build -- --release --target aarch64-pc-windows-msvc",
-    "build:linux:x64": "npm run build -- --release --target x86_64-unknown-linux-gnu",
-    "build:linux:arm64": "npm run build -- --release --target aarch64-unknown-linux-gnu",
-    "build:darwin:x64": "npm run build -- --release --target x86_64-apple-darwin",
-    "build:darwin:arm64": "npm run build -- --release --target aarch64-apple-darwin",
-    "install": "prebuild-install --runtime napi",
+    "build:win32:x86": "./scripts/build-win32-x86.sh",
+    "build:win32:x64": "./scripts/build-win32-x64.sh",
+    "build:win32:arm64": "./scripts/build-win32-arm64.sh",
+    "build:linux:x86": "./scripts/build-linux-x86.sh",
+    "build:linux:x64": "./scripts/build-linux-x64.sh",
+    "build:linux:arm64": "./scripts/build-linux-arm64.sh",
+    "build:darwin:x64": "./scripts/build-darwin-x64",
+    "build:darwin:arm64": "./scripts/build-darwin-arm64.sh",
+    "install": "prebuild-install --verbose --force --runtime napi",
     "test": "cargo test"
   },
   "author": "ShinySaana",
   "binary": {
-    "napi_versions": [4]
+    "napi_versions": [
+      4
+    ]
   },
   "devDependencies": {
     "cargo-cp-artifact": "^0.1",
