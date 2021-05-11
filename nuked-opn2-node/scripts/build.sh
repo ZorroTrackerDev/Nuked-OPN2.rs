@@ -22,11 +22,19 @@ npm run $npm_script
 mkdir -p $DIR/lib
 cp $DIR/../target/$artifact_output $artifact_name
 
-pattern="darwin"
-if [[ $platform =~ $pattern ]]
+pattern_darwin="darwin"
+pattern_arm64_linux="linux-arm64"
+pattern_arm64_windows="win32-arm64"
+if [[ $platform =~ $pattern_darwin ]]
 then
     strip -S $artifact_name
-else
+elif [[ $platform =~ $pattern_arm64_linux ]]
+then
+    aarch64-linux-gnu-strip $artifact_name
+elif [[ $platform =~ $pattern_arm64_windows ]]
+then
+    echo No strip needed
+else 
     strip $artifact_name
 fi
 

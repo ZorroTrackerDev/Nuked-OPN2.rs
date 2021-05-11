@@ -4,8 +4,13 @@ image = "win32-x86-cross"
 [target.x86_64-pc-windows-gnu]
 image = "win32-x64-cross"
 
+
+
 [target.i686-unknown-linux-gnu]
 image = "linux-x86-cross"
 
 [target.x86_64-unknown-linux-gnu]
 image = "linux-x64-cross"
+
+[target.aarch64-unknown-linux-gnu]
+image = "linux-arm64-cross"

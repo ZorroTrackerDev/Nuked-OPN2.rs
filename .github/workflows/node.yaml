@@ -17,6 +17,8 @@ jobs:
         submodules: recursive
     - uses: actions/setup-node@v2
 
+    - run: "sudo apt-get update && sudo apt-get install binutils-aarch64-linux-gnu -y"
+
     - run: "sudo ./docker-linux.sh"
       working-directory: ./nuked-opn2-node/scripts
 
@@ -61,6 +63,27 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  win32-arm64:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    - uses: actions/setup-node@v2
+
+    - run: "npm install --ignore-scripts"
+      working-directory: ./nuked-opn2-node
+    
+    - run: "bash ./build-win32-arm64.sh"
+      working-directory: ./nuked-opn2-node/scripts
+
+    - uses: softprops/action-gh-release@v1
+      with:
+        files: "./nuked-opn2-node/prebuilds/*"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   darwin:
     runs-on: macos-latest
 
@@ -76,9 +99,8 @@ jobs:
     - run: "bash ./build-darwin-x64.sh"
       working-directory: ./nuked-opn2-node/scripts
 
-    - run: "bash ./build-darwin-arm64.sh"
-      working-directory: ./nuked-opn2-node/scripts
-
+    # - run: "bash ./build-darwin-arm64.sh"
+    #   working-directory: ./nuked-opn2-node/scripts
 
     - uses: softprops/action-gh-release@v1
       with:
