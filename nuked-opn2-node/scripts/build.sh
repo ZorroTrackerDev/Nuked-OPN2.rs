@@ -23,8 +23,10 @@ mkdir -p $DIR/lib
 cp $DIR/../target/$artifact_output $artifact_name
 
 pattern="darwin"
-if [[ ! $platform =~ $pattern ]]
+if [[ $platform =~ $pattern ]]
 then
+    strip -S $artifact_name
+else
     strip $artifact_name
 fi
 
