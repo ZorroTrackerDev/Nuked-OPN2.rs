@@ -76,6 +76,7 @@ jobs:
       working-directory: ./nuked-opn2-node
     
     - run: "bash ./build-win32-arm64.sh"
+      shell: bash
       working-directory: ./nuked-opn2-node/scripts
 
     - uses: softprops/action-gh-release@v1
