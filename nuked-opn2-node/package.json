@@ -18,7 +18,7 @@
     "build:linux:arm64": "./scripts/build-linux-arm64.sh",
     "build:darwin:x64": "./scripts/build-darwin-x64",
     "build:darwin:arm64": "./scripts/build-darwin-arm64.sh",
-    "install": "prebuild-install --verbose --force --runtime napi",
+    "install": "prebuild-install --verbose --force --runtime napi --target 4",
     "test": "cargo test"
   },
   "author": "ShinySaana",
