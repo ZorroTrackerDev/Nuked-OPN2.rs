@@ -21,9 +21,6 @@ jobs:
 
     - run: "sudo ./docker-linux.sh"
       working-directory: ./nuked-opn2-node/scripts
-
-    - run: "npm install --ignore-scripts"
-      working-directory: ./nuked-opn2-node
     
     - run: "bash ./build-linux-x86.sh"
       working-directory: ./nuked-opn2-node/scripts
@@ -48,9 +45,6 @@ jobs:
         submodules: recursive
     - uses: actions/setup-node@v2
 
-    - run: "npm install --ignore-scripts"
-      working-directory: ./nuked-opn2-node
-
     - run: "sudo ./docker-win32.sh"
       working-directory: ./nuked-opn2-node/scripts
     
@@ -74,8 +68,7 @@ jobs:
         submodules: recursive
     - uses: actions/setup-node@v2
 
-    - run: "npm install --ignore-scripts"
-      working-directory: ./nuked-opn2-node
+    - run: "choco install llvm"
     
     - run: "bash ./build-win32-arm64.sh"
       working-directory: ./nuked-opn2-node/scripts
@@ -94,9 +87,6 @@ jobs:
       with:
         submodules: recursive
     - uses: actions/setup-node@v2
-
-    - run: "npm install --ignore-scripts"
-      working-directory: ./nuked-opn2-node
     
     - run: "bash ./build-darwin-x64.sh"
       working-directory: ./nuked-opn2-node/scripts
