@@ -14,10 +14,10 @@ pub mod constants {
 #[repr(u32)]
 #[derive(Copy, Clone, Debug)]
 pub enum ChipType {
-    YM2612 = ym3438_mode_ym2612,
-    ASICYM3438 = ym3438_mode_readmode,
-    DiscreteYM3438 = ym3438_mode_ym2612 | ym3438_mode_readmode,
-    YM2612MD1 = ym3438_mode_ym2612 | 0x10
+    YM2612 = ym3438_mode_ym2612 as u32,
+    ASICYM3438 = ym3438_mode_readmode as u32,
+    DiscreteYM3438 = ym3438_mode_ym2612 as u32 | ym3438_mode_readmode as u32,
+    YM2612MD1 = ym3438_mode_ym2612 as u32 | 0x10
 }
 
 
