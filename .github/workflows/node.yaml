@@ -77,7 +77,7 @@ jobs:
     - run: "npm install --ignore-scripts"
       working-directory: ./nuked-opn2-node
     
-    - run: "bash ./build-win32-arm64.sh"
+    - run: "cargo build --release --target "
       shell: bash
       working-directory: ./nuked-opn2-node/scripts
 

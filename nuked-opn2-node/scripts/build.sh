@@ -5,8 +5,8 @@ set -e
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 DIR=$SCRIPT_DIR/..
 
-npm_script=$1
-platform=$2
+platform=$1
+target=$2
 artifact_output=$3
 
 cd $DIR
@@ -18,9 +18,9 @@ final_name=$name-v$version-napi-v4-$platform
 final_artifact_dir=$DIR/prebuilds-artifacts/$final_name
 
 rm -rf $artifact_name || true
-npm run $npm_script
+$SCRIPT_DIR/cross.sh build --release -p nuked-opn2-node --target $target 
 mkdir -p $DIR/lib
-cp $DIR/../target/$artifact_output $artifact_name
+cp $DIR/../target/$target/release/$artifact_output $artifact_name
 
 pattern_darwin="darwin"
 pattern_arm64_linux="linux-arm64"
