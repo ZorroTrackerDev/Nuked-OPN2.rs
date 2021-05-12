@@ -1,4 +1,4 @@
-const addon = require("bindings")("nuked-opn2-node")
+const addon = require("./build/nuked-opn2-node.node")
 
 class YMChip {
     constructor(type) {
