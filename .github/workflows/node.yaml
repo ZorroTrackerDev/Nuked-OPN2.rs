@@ -24,8 +24,12 @@ jobs:
     
     - run: "bash ./build-linux-x86.sh"
       working-directory: ./nuked-opn2-node/scripts
+
+    - run: "rm -rf ./target" 
+    
     - run: "bash ./build-linux-x64.sh"
       working-directory: ./nuked-opn2-node/scripts
+    
     - run: "bash ./build-linux-arm64.sh"
       working-directory: ./nuked-opn2-node/scripts
 
